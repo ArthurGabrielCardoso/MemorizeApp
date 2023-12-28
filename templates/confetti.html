@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Congratulations
+{% endblock %}
+
+{% block main %}
+
+<div class="completion-message">
+    <!-- MESSAGE CONGRATULATIONS COMPLETE FLASHCARDS -->
+    <p><strong>Congratulations </strong>you've completed your flashcards for today!!</p>
+
+    <!-- Flex container para centralizar a imagem e o botão verticalmente -->
+    <div class="center-content">
+        <!-- IMAGE CONGRATULATIONS COMPLETE FLASHCARDS -->
+        <img src="static/images/complete.png" class="img-fluid" alt="complete">
+
+        <!-- BUTTON LINK TO INDEX -->
+        <a href="/">
+            <button class="btn btn-primary7 btn-lg custom-button2" type="submit">Back</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- CONFETTI  -->
+<div id="confetti-container"></div>
+
+<!-- LINK TO CONFETTI SCRIPT -->
+<script src="/static/confetti.js"></script>
+
+<!-- SCRIPT TO SHOW THE CONGRATULATIONS MESSAGE AND THE CONFETTI -->
+<script>
+
+    const completionMessage = document.querySelector('.completion-message');
+
+    // FUNCTION CONGRATULATIONS MESSAGE
+    function showCompletionMessage() {
+        completionMessage.style.display = 'block';
+        setTimeout(showConfetti, 1000); // Mostra o confete após 1 segundo
+    }
+
+    // FUNCTION CONFETTI
+    function showConfetti() {
+        const confettiContainer = document.getElementById('confetti-container');
+        confettiContainer.style.display = 'block';
+    }
+
+    // CALL THE FUNCTION TO SHOW THE CONGRATULATIONS MESSAGE AND CONFETTI
+    showCompletionMessage();
+
+</script>
+
+{% endblock %}
+
+

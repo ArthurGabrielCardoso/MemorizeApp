@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Review
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h1 class="text-center">Flashcard Review</h1>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-4 mb-4">
+            <a href="/easy_folder" class="card custom-card">
+                <div class="card-header custom-header">
+                    <h6 class="folder_name">Easy flashcards</h6>
+                </div>
+                <div class="card-body custom-body text-left">
+                    <p class="description-p">All flashcards easy</p>
+                </div>
+                <div class="card-footer custom-footer text-left">
+                    <!-- Footer content -->
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="/medium_folder" class="card custom-card">
+                <div class="card-header custom-header">
+                    <h6 class="folder_name">Medium flashcards</h6>
+                </div>
+                <div class="card-body custom-body text-left">
+                    <p class="description-p">All flashcards medium</p>
+                </div>
+                <div class="card-footer custom-footer text-left">
+                    <!-- Footer content -->
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="/hard_folder" class="card custom-card">
+                <div class="card-header custom-header">
+                    <h6 class="folder_name">Hard flashcards</h6>
+                </div>
+                <div class="card-body custom-body text-left">
+                    <p class="description-p">All flashcards hard</p>
+                </div>
+                <div class="card-footer custom-footer text-left">
+                    <!-- Footer content -->
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   My Flashcards
+{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+    <h1 class="text-center">Flashcard Folders</h1>
+    {% if folders|length == 0 %}
+        <h3 class="text-center">No folders yet</h3>
+        <img src="{{ url_for('static', filename='images/NoFile.png') }}" alt="image" class="Nofolder" width="350" height="450">
+    {% endif %}
+    <div class="row justify-content-center mt-3">
+        {% for folder in folders %}
+
+        <div class="col-md-4 mb-4">
+
+
+                <a href="/flashcards/{{ folder['folder_name'] }}?last_seen={{ folder['last_seen'] }}" class="card custom-card" data-folder-name="{{ folder['folder_name'] }}">
+
+                <div class="card-header custom-header">
+                    <h6 class="folder_name">{{ folder['folder_name'] }}</h6>
+                    <div class="btn-group btn-group-folder">
+                        <button type="button" class="btn btn-secondary-folder" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end" aria-labelledby="dropdownBack">
+                            <button class="btn btn-edit-back dropdown-item edit-folder" data-folder-name="{{ folder['folder_name'] }}" data-folder-description="{{ folder['folder_description'] }}">
+                                Edit folder
+                            </button>
+                            <button class="btn btn-edit-back dropdown-item delete-folder" data-folder-name="{{ folder['folder_name'] }}">
+                                Delete folder
+                            </button>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body custom-body text-left">
+                    <p class="description-p">{{ folder['folder_description'] }}</p>
+                </div>
+                <div class="card-footer custom-footer text-left">
+                    <p class="footer-p"><strong>Last seen: </strong> <span class="last-seen-time" data-folder-name="{{ folder['folder_name'] }}">{{ folder['last_seen'] }}</span> </p>
+                </div>
+            </a>
+            </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit</h5>
+                <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="heading">Folder information</p>
+                <form method="post" class="edit-form" action="">
+                    <input type="text" class="input-box1" id="front" name="new_name" value="">
+                    <label for="front" class="edit_label1">Folder Name</label>
+                    <span class="underline1"></span>
+                    <input type="text" class="input-box1" id="back" name="new_description" value="">
+                    <label for="back" class="edit_label1">Folder Description</label>
+                    <span class="underline1"></span>
+                    <br>
+                    <button type="submit" class="btn btn-primary5" id="saveChangesButton">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Confirmation</h5>
+                <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="heading">Are you sure that you want to delete the folder?</p>
+                <form method="post" class="delete-form" action="">
+                    <button type="submit" class="btn btn-danger">Delete folder</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const editButtons = document.querySelectorAll('.edit-folder');
+        const deleteButtons = document.querySelectorAll('.delete-folder');
+        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+
+        editButtons.forEach(editButton => {
+            editButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                const folderName = event.target.getAttribute('data-folder-name');
+                const folderDescription = event.target.getAttribute('data-folder-description');
+                const editForm = document.querySelector('.edit-form');
+                editForm.action = `/edit_folder/${folderName}`;
+                document.getElementById('front').value = folderName;
+                document.getElementById('back').value = folderDescription;
+                editModal.show();
+            });
+        });
+
+        deleteButtons.forEach(deleteButton => {
+            deleteButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                const folderName = event.target.getAttribute('data-folder-name');
+                const deleteForm = document.querySelector('.delete-form');
+                deleteForm.action = `/delete_folder/${folderName}`;
+                deleteModal.show();
+            });
+        });
+    });
+    </script>
+
+
+{% endblock %}

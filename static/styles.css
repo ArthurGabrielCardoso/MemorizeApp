@@ -1,0 +1,1388 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --white: #fff;
+    --dark: #12111a;
+    --dark-flashcard: #1e1c2a;
+    --dark-button: #312F40;
+    --dark-blue: #146faf;
+    --blue: #1B86D5;
+    --light-blue: #3DB4C6;
+}
+
+/* ------ THEME COLOR STYLES ------ */
+
+/* Tema Claro */
+body {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* Tema Escuro */
+body.dark-theme {
+    background-color: var(--dark);
+    color: var(--white) !important;
+}
+
+
+/* ------ END THEME COLOR STYLES ------ */
+
+
+h1 {
+    margin-top: -3rem;
+    margin-bottom:1rem;
+    font-size: 29px;
+}
+
+h2 {
+    margin-top: -1rem;
+    margin-bottom:1rem;
+    font-size: 29px;
+}
+
+h3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h4 {
+    margin-top: -1rem;
+    margin-bottom:0.rem;
+    font-size: 26px;
+}
+
+main {
+    text-align: center; /* CENTER CONTENTS */
+    overflow-x: auto; /* SCROLL HORIZONTALY AS NEEDED */
+}
+
+main img {
+    max-width: 100%; /* CONSTRAIN IMAGES ON SMALL SCREENS */
+}
+
+/* ------ LOGIN AND REGISTER STYLES ------ */
+
+.navbar-logo-m1 {
+    color: var(--dark);
+    font-size: 29px;
+    font-weight: 600;
+    margin-left: -0.4rem;
+    margin-bottom: -0.035rem;
+}
+
+.navbar-logo-emorize1 {
+    color: var(--dark);
+    font-size: 27px;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+
+/* Estilos padrão para o formulário */
+.form-login {
+    background-color: var(--dark);
+    box-shadow: 10px 0px 30px 10px rgba(0, 0, 0, 0.30);
+    border-radius: 0.375rem;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Outros estilos permanecem inalterados */
+
+.welcome-login {
+    color: #ffff;
+    margin-left: 0.7rem;
+    margin-top: 2rem;
+    height: auto;
+    line-height: 2.5rem;
+    font-size: 30px;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+/* Estilos para o rótulo */
+.form-label {
+    color: var(--white);
+    opacity: 0.8;
+    text-align: left; /* Define o alinhamento à esquerda */
+    margin-top: 1.5rem;
+    margin-left: -17.6rem;
+}
+
+.form-label1 {
+    color: var(--white);
+    opacity: 0.8;
+    text-align: left; /* Define o alinhamento à esquerda */
+    margin-top: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Estilos para o campo de entrada e ícone */
+.username,
+.password,
+.password-confirm {
+    background-color: var(--dark);
+    background-repeat: no-repeat;
+    background-position: 3%;
+    background-size: 18px;
+    color: var(--white);
+    outline: 0;
+    opacity: 0.7;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 90%;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(55, 65, 81, 1);
+    padding: 0.9rem 1rem;
+    margin-top: 0rem;
+}
+
+
+
+.form-control:focus {
+    color: var(--white) !important;
+    background-color: var(--dark) !important; /* Defina '--cor-de-fundo-desejada' com a cor desejada */
+    border-color: var(--blue) !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+.btn-primary {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 12px 140px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.5s;
+}
+
+.btn-primary:hover {
+    background: var(--dark-blue);
+    box-shadow: -15px 0px 30px -15px var(--blue);
+}
+
+.signup {
+    font-size: 13px;
+    color: var(--white);
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+.signup a:hover {
+    color: #187ac0;
+    text-decoration: underline #1B86D5;
+}
+
+.input-group-text {
+    background-color: var(--dark);
+    opacity: 0.7;
+    color: var(--white);
+    border: 1px solid rgba(55, 65, 81, 1);
+    display: flex;
+    align-items: center; /* Isso alinha verticalmente os ícones */
+    height: 3.5rem;
+    margin-top: 0rem;
+}
+
+.input-group-text i {
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+
+
+#togglePass {
+    border-left: none !important;
+}
+
+.btn-primary2 {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 12px 140px;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    transition: all 0.5s;
+}
+
+/* Media query para estilos móveis */
+@media screen and (max-width: 768px) {
+    /* Redefina os estilos do formulário para telas menores */
+    .form-login {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    /* Estilos para o rótulo */
+    .form-label {
+        color: var(--white);
+        opacity: 0.8;
+        text-align: left; /* Define o alinhamento à esquerda */
+        margin-top: 1.5rem;
+        margin-left: -16.6rem;
+    }
+
+
+    .form-label1 {
+        color: var(--white);
+        margin-left: 0.5rem;
+    }
+
+
+    .username,
+    .password,
+    .password-confirm {
+        width: 100%;
+        padding: 0.9rem 1.5rem;
+        font-size: 17px;
+    }
+
+    .input-group-text {
+        height: 3.5rem;
+        font-size: 17px;
+    }
+
+    .label-user,
+    .label-password,
+    .label-password-confirm {
+        margin-top: 1;
+    }
+
+    .btn-primary2 {
+        background-color: var(--blue);
+        color: var(--white);
+        font-weight: 400;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 15px 35px;
+        margin-top: 0rem;
+        margin-bottom: 2rem;
+        transition: all 0.5s;
+    }
+
+
+    .btn-primary3 {
+        background-color: var(--blue);
+        color: var(--white);
+        font-weight: 400;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 12px 140px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.5s;
+    }
+}
+
+
+/* ------ END LOGIN AND REGISTER STYLES ------ */
+
+
+/* ------ LAYOUT STYLES ------ */
+
+/* Estilos da Navbar */
+.navbar-logo {
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+
+}
+
+.logo-memorize {
+    margin-right: 10px;
+}
+
+.navbar-logo-m {
+    color: var(--dark);
+    font-size: 29px;
+    font-weight: 600;
+    margin-left: -0.4rem;
+    margin-bottom: -0.035rem;
+}
+
+.dark-theme .navbar-logo-m {
+    color: var(--white);
+}
+
+
+.navbar-logo-emorize {
+    color: var(--dark);
+    font-size: 27px;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+
+.dark-theme .navbar-logo-emorize {
+    color: var(--white);
+}
+
+.navbar-logo-m-mobile {
+    display: none;
+}
+
+.navbar-logo-emorize-mobile {
+    display: none;
+}
+
+
+/* Estilos para o modo claro */
+.navbar {
+    background-color: var(--white) !important; /* Defina a cor de fundo para o modo escuro */
+    color: var(--dark);
+}
+
+/* Estilos para o modo escuro */
+.dark-theme .navbar{
+    background-color: var(--dark)!important; /* Defina a cor de fundo para o modo escuro */
+    color: var(--white) !important;
+    border: none !important;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.5) !important;
+}
+
+.custom-nav-item .nav-link {
+    color: var(--dark)!important;
+}
+
+/* Estilize os links da Navbar no modo dark */
+.dark-theme .custom-nav-item .nav-link {
+    color: var(--white)!important;
+}
+
+/* Estilos para os itens da Navbar */
+.custom-nav-item .nav-link {
+    color: var(--dark) !important;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: -0.5rem;
+    margin-right: 1rem;
+    margin-left: -1rem;
+}
+
+.dark-theme a i.fas {
+    color: var(--white);
+}
+
+.dark-theme a[href="/profile"] {
+    color: var(--white);
+}
+
+.dark-theme a[href="/profile"]:hover {
+    background-color: var(--dark-flashcard);
+}
+
+.dark-theme a[href="#"] {
+    color: var(--white);
+}
+
+.dark-theme a[href="#"]:hover {
+    background-color: var(--dark-flashcard);
+}
+
+.dark-theme a[href="/logout"] {
+    color: var(--white);
+}
+
+.dark-theme a[href="/logout"]:hover {
+    background-color: var(--dark-flashcard);
+
+}
+
+/* Ícone no Tema Claro */
+.light-theme a.nav-link.user-nav svg path {
+    fill: var(--dark-blue);
+}
+
+/* Ícone no Tema Escuro */
+.dark-theme a.nav-link.user-nav svg path {
+    fill: var(--white); /* Se desejar mudar a cor do ícone no tema escuro também */
+}
+
+
+
+.custom-nav-item:hover .nav-link:hover {
+        color: var(--dark) !important;
+        border-bottom: 4px solid var(--dark-blue);
+}
+
+.dark-theme .custom-nav-item:hover .nav-link:hover {
+    color: var(--white) !important;
+    border-bottom: 4px solid var(--dark-blue);
+}
+
+.dark-theme .user-dropdown {
+    background-color: var(--dark) !important;
+}
+
+.dark-theme .offcanvas-header {
+    background-color: var(--dark) !important;
+    color: white;
+}
+
+.dark-theme .offcanvas-body {
+    background-color: var(--dark) !important;
+}
+
+
+
+/* Estilos para o botão de navegação */
+.custom-btn-nav {
+    color: var(--white) !important;
+    background-color: var(--blue);
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 2rem !important;
+    margin-right: 2rem;
+    margin-bottom: -0.5rem;
+}
+
+
+
+/* Ajuste o z-index da logo e dos elementos à direita */
+.navbar-logo {
+    z-index: 0.5; /* Um valor menor, por exemplo, 1, para a logo */
+}
+
+/* Exemplo de ajuste para os elementos à direita */
+.custom-nav-item {
+    z-index: 2; /* Um valor maior, por exemplo, 2, para os elementos à direita */
+}
+
+.custom-nav-item7 {
+    display: block !important;
+    margin-top: -3.3rem;
+    margin-left: 7.5rem;
+}
+
+.custom-nav-item3 {
+    display: block !important;
+    margin-top: -3.3rem;
+    margin-left: 21.2rem;
+}
+
+
+
+.custom-btn-nav:hover {
+    background-color: var(--dark-blue);
+    margin-bottom: -0.4rem;
+}
+
+.custom-nav-item1 {
+    margin-right: 15px; /* Adicione uma margem à direita para separar "Create Flashcard" de "Profile" */
+}
+
+/* Estilo para o alinhamento à direita apenas para "Create Flashcard" e "Profile" */
+.d-inline-block {
+    margin-right: 15px;
+}
+
+
+.user-dropdown {
+    position: relative; /* Defina a posição como relativa para alinhar o dropdown com o "Profile" */
+    margin-right: 15px; /* Adicione uma margem à direita para separar o "Profile" do resto dos elementos */
+}
+
+/* Para alinhar o ícone do usuário com o "Profile" */
+.user-nav {
+    vertical-align: middle;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Posiciona o dropdown à direita do elemento pai */
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content a:nth-child(2) {
+    border-right: 1px solid #ccc; /* Adiciona uma borda à direita do item "Theme" */
+    padding-right: 10px; /* Espaçamento à direita da borda */
+}
+
+.dropdown-content hr {
+    border: none;
+    border-top: 1px solid #ccc; /* Adiciona uma linha separadora */
+    margin: 6px 0; /* Espaçamento acima e abaixo da linha */
+}
+
+/* Estilos para o botão de navegação responsivo em dispositivos móveis */
+.btn-nav2 {
+    display: none;
+}
+
+/* Estilos para o botão de fechar no lado direito */
+.btn-close-custom {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-right: 50px !important;  /* Adicione margem à direita */
+    margin-top: 10px ; /* Adicione margem ao topo */
+}
+
+.offcanvas-start {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* Estilo para os itens de menu dentro do offcanvas */
+.custom-nav-item {
+    color: var(--dark) !important;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 5px 5px;
+}
+
+/* Estilo para o ícone no item de menu "Theme" */
+.custom-nav-item i {
+    background-color: var(--blue); /* Define o fundo preto */
+    border-radius: 20%; /* Define cantos arredondados */
+    margin-bottom: 10px; /* Adiciona espaçamento inferior entre os itens */
+    padding: 15px 15px; /* Adiciona espaçamento interno para melhor aparência */
+    margin-right: 10px; /* Adiciona um espaço à direita do ícone */
+    color: white; /* Define a cor do ícone para branco */
+}
+
+/* Estilos para os itens da Navbar */
+.custom-nav-item .nav-link {
+    margin-bottom: -0.5rem;
+    margin-right: 1rem;
+}
+
+
+.custom-nav-item1:hover .nav-link:hover {
+    color: var(--blue) !important;
+    border-bottom: 3px solid var(--blue);
+}
+
+
+    @media (max-width: 767px) {
+
+        .bi-list {
+            margin-left: -1rem;
+            width: 38px;
+        }
+
+        .dark-theme .bi-list {
+            color: var(--white);
+            margin-left: -1rem;
+            width: 38px;
+        }
+
+        .bi {
+            width: 35px;
+        }
+        /* Remover a borda de foco (outline) do botão */
+
+        .navbar-toggler-icon {
+            background-color: var(--dark); /* Defina a cor que você deseja aqui */
+        }
+
+        .navbar-toggler {
+            color: var(--dark) !important;
+            margin-right: 0;
+            outline: none;
+            box-shadow: none;
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .logo-memorize {
+            width: 30 !important;
+            height: 40;
+            margin-left: -0.5rem;
+        }
+
+        .navbar-logo {
+            margin-right: auto; /* Move a logo para a esquerda (espaçamento automático) */
+        }
+
+        .navbar-logo-m {
+            color: var(--dark);
+            font-size: 25px;
+            font-weight: 600;
+            margin-left: -0.4rem;
+            margin-top: -1rem;
+        }
+
+        .navbar-logo-emorize {
+            color: var(--dark);
+            font-size: 23px;
+            font-weight: 600;
+            margin-right: 2rem;
+        }
+
+        /* Esconda os itens da Navbar em dispositivos móveis */
+        .d-md-block, .ml-auto {
+            display: none;
+        }
+
+        /* form style */
+        .form {
+            font-size: 18px;
+            width: 210px;
+            height: 50px;
+        }
+
+        .input {
+            margin-inline-start: 30px;
+            margin-inline-end: 0; /* Remova a margem à direita */
+        }
+
+        svg {
+            width: 20px;
+          }
+
+
+        .close-btn {
+            display: none; /* Ocultar o .close-btn em dispositivos móveis */
+        }
+        .icon-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .icon-container svg {
+            width: 40px; /* Largura do ícone */
+            height: 40px; /* Altura do ícone */
+            fill: var(--blue); /* Cor do ícone */
+        }
+
+
+
+
+
+    }
+
+
+/* ------ END LAYOUT STYLES ------ */
+
+
+
+/* ------ PROFILE STYLES ------ */
+
+.from-group {
+    margin-top: 6rem;
+}
+
+#profile-btn {
+    background-color: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    text-align: center !important; /* Centraliza o texto horizontalmente */
+    display: inline; /* Força o botão a ser exibido em linha */
+    max-width: 350px;
+    margin-top: 2rem;
+    padding: 1rem 5rem;
+}
+
+#profile-btn:hover {
+    background-color: var(--dark-blue);
+}
+
+.form-label1 {
+    margin-left: -16rem;
+}
+
+.form-label2 {
+    margin-left: -14rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-label3 {
+    margin-left: -10rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+
+
+/* ------ END PROFILE STYLES ------ */
+
+
+/* ------ INDEX STYLES ------ */
+
+.Nofolder{
+    margin-top: -10rem;
+    margin-bottom: 9rem;
+    opacity: 0.9;
+}
+
+.custom-card {
+    background-color: var(--dark);
+    color: var(--white);
+    text-decoration: none;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.dark-theme .custom-card {
+    background-color: var(--dark-flashcard);
+}
+
+.custom-card:hover {
+    color: var(--white);
+    opacity: 0.9;
+    border-bottom: 5px solid var(--dark-blue);
+}
+
+.custom-header {
+    background-color: var(--dark-blue);
+    color: #fff;
+    font-size: 27px;
+    font-weight: 600;
+    text-decoration: none;
+    width: 350px;
+    border-radius: 10px;
+    padding-top: 1rem;
+    margin-top: -0.1rem;
+    margin-left: -0.05rem;
+}
+
+.folder_name {
+    text-align:left;
+    font-size: 20px;
+}
+
+.custom-body {
+    background-color: var(--dark);
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dark-theme .custom-body {
+    background-color: var(--dark-flashcard);
+}
+
+.description-p {
+    text-align:left;
+}
+
+.custom-footer {
+    background-color: var(--dark);
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.dark-theme .custom-footer {
+    background-color: var(--dark-flashcard);
+}
+
+.footer-p {
+    text-align:left;
+}
+
+.btn-group-folder {
+    background-color: transparent;
+    position: absolute !important;
+    top: 65%;
+    right: 0;
+}
+
+
+.btn-secondary-folder {
+    color: var(--white);
+    font-size: 20px;
+    opacity: 0.95;
+}
+
+
+.btn-secondary-folder:hover, .btn-secondary-back:hover {
+    color: var(--white);
+}
+
+.dark-theme .custom-modal {
+    background-color: var(--dark) !important;
+}
+
+.dark-theme .custom-close {
+    color: var(--white) !important;
+}
+
+.edit_label1 {
+    display: flex;
+    font-size: 13px;
+    color: var(--dark-blue);
+    font-weight: 500;
+    margin-left: 2.2rem;
+    margin-top: -1rem;
+}
+
+
+@media (max-width: 767px) {
+    .btn-group-folder {
+        background-color: transparent;
+        position: absolute !important;
+        top: 105%;
+        right: 0;
+    }
+
+    .edit_label1 {
+        display: flex;
+        font-size: 13px;
+        color: var(--dark-blue);
+        font-weight: 500;
+        margin-left: 0.7rem;
+        margin-top: -1rem;
+    }
+}
+
+
+/* ------ END INDEX STYLES ------ */
+
+
+/* ------ CREATE STYLES ------ */
+
+.input-wrapper {
+    position: relative;
+    width: 100px;
+    margin: 50px auto;
+  }
+
+.input-box {
+    background-color: transparent;
+    color: var(--dark);
+    font-size: 22px;
+    width: 53%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    transition: border-color 0.3s ease-in-out;
+    padding: 10px 0;
+    margin-top: 2rem;
+}
+
+.dark-theme .input-box, .input-box1 {
+    color: var(--white);
+}
+
+.dark-theme .input-box1 {
+    color: var(--white);
+}
+
+
+.input-box:focus {
+    border-color: var(--dark-blue);
+    outline: none;
+}
+
+.input-box:focus + .underline {
+    transform: scaleX(1);
+}
+
+/* STYLE FLASHCARD_FRONT AND BACK ADD */
+
+.heading {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.flashcard-form {
+    font-family: Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--dark);
+    border: 2px solid var(--dark);
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    max-width: 700px;
+    padding: 30px;
+    margin: 4rem auto;
+}
+
+.dark-theme .flashcard-form {
+    background-color: var(--dark-flashcard);
+    color: var(--white);
+}
+
+.input-box1 {
+    background-color: transparent;
+    color: var(--dark);
+    font-size: 20px;
+    width: 85%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    transition: border-color 0.3s ease-in-out;
+    padding: 10px 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-box1:focus {
+    border-color: var(--dark-blue);
+    outline: none;
+}
+
+.input-box1:focus + .underline {
+    transform: scaleX(1);
+}
+
+#add-flashcard {
+    border: none;
+    padding: 0.8rem 4rem;
+    margin-top: 2rem;
+}
+
+.custom-button1 {
+    border: solid 0.15rem var(--dark-blue);
+    color: var(--dark-blue);
+    padding: 0.7rem 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.custom-button1:focus {
+    background-color: var(--dark-blue);
+}
+
+.custom-delete-button2 {
+    padding: 7px 12px;
+    margin-top: -6.3rem;
+    margin-left: 38rem;
+}
+
+.custom-delete-button2:hover {
+    background: #D60A0A;
+    box-shadow: -15px 0px 30px -15px #D60A0A;
+    border: 1px solid #D60A0A;
+}
+
+@media (max-width: 767px) {
+
+    .custom-button {
+        border: none;
+    }
+
+    .custom-button1 {
+        border: solid 0.15rem;
+        padding: 0.7rem 14vw;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .input-box {
+        color: var(--dark);
+        font-size: 20px;
+        width: 90%;
+    }
+
+    .flashcard-form {
+        max-width: 95%;
+    }
+
+    .input-box1 {
+        width: 95%;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .custom-delete-button2 {
+        padding: 5px 10px;
+        margin-top: -7rem;
+        margin-left: 18rem;
+    }
+
+
+}
+
+/* ------ END CREATE STYLES ------ */
+
+
+/* ------ FLASHCARDS STYLES ------ */
+
+.flashcard-counter {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.flashcard-container {
+    background-color: var(--dark);
+    font-weight: 400;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: auto;
+    height: 40vh;
+    border-radius: 0.375rem;
+    margin: 4vh auto;
+}
+
+.dark-theme .flashcard-container {
+    background-color: var(--dark-flashcard);
+}
+
+.flashcard-container .flashcard {
+    font-size: 27px;
+    width: 100%; /* CARD WIDTH */
+    height: 400px; /* CARD HEIGHT */
+    perspective: 1000px;
+    padding: 0;
+    margin: 0;
+}
+
+.flashcard-container .flashcard .flashcard-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.flashcard-container .flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-container .flashcard .front,
+.flashcard-container .flashcard .back {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.flashcard-container .flashcard .front {
+    background-color: var(--dark-flashcard);
+    color: var(--white);
+}
+
+.dark-theme .flashcard-container .flashcard .front {
+    background-color: var(--dark-flashcard);
+    color: var(--white);
+}
+
+.flashcard-container .flashcard .back {
+    background-color: var(--dark-flashcard);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+
+.btn-speak-front, .btn-speak-back {
+    background-color: transparent;
+    position: absolute;
+    margin-top: -10.5rem;
+    margin-left: 35rem;
+}
+
+.btn-group {
+    background-color: transparent;
+    position: absolute !important;
+    margin-top: -10.5rem;
+    margin-left: 40rem;
+}
+
+
+.btn-secondary-front, .btn-secondary-back {
+    color: var(--white);
+    font-size: 25px;
+    font-weight: light;
+}
+
+.btn-secondary-front:hover, .btn-secondary-back:hover {
+    color: var(--white);
+}
+
+.edit_label {
+    display: flex;
+    font-size: 13px;
+    color: var(--dark-blue);
+    font-weight: 500;
+    margin-left: 2.2rem;
+    margin-top: -1rem;
+}
+
+.btn-primary5 {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 11px 30px;
+    margin-top: 1rem;
+    margin-left: 12rem;
+    transition: all 0.5s;
+}
+
+.btn-primary5:hover {
+    background: var(--dark-blue);
+    color: var(--white);
+}
+
+.custom-delete-button {
+    padding: 10px 15px;
+    margin-top: -4.3rem;
+    margin-left: -3rem;
+}
+
+.custom-delete-button:hover {
+    background: #D60A0A;
+    box-shadow: -15px 0px 30px -15px #D60A0A;
+    border: 1px solid #D60A0A;
+}
+
+.btn-primary10, .btn-primary11, .btn-primary12{
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 12px 140px;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    transition: all 0.5s;
+}
+.btn-primary10:hover {
+    background: #279635;
+    box-shadow: -15px 0px 30px -15px var(--blue);
+    transform: scale(0.94); /* Reduzir o tamanho do botão ligeiramente */
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3); /* Adicionar uma sombra */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Adicionar uma transição suave */
+}
+
+.btn-primary11:hover {
+    background: #DACE13;
+    box-shadow: -15px 0px 30px -15px var(--blue);
+    transform: scale(0.95); /* Reduzir o tamanho do botão ligeiramente */
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3); /* Adicionar uma sombra */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Adicionar uma transição suave */
+}
+
+.btn-primary12:hover {
+    background: #C01212;
+    box-shadow: -15px 0px 30px -15px var(--blue);
+    transform: scale(0.95); /* Reduzir o tamanho do botão ligeiramente */
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3); /* Adicionar uma sombra */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Adicionar uma transição suave */
+}
+
+
+
+/* FIT THE SPEAKER BUTTON IN SMALL DEVICES */
+@media (max-width: 768px) {
+    .btn-speak-front {
+        background-color: transparent;
+        position: absolute;
+        margin-top: -30vh;
+        margin-left: 35vh;
+    }
+
+    .btn-speak-back {
+        background-color: transparent;
+        position: absolute;
+        margin-top: -30vh;
+        margin-left: 35vh;
+    }
+
+    .btn-group {
+        background-color: transparent;
+        position: absolute !important;
+        margin-top: -31vh;
+        margin-left: -40vh;
+    }
+
+
+    .btn-secondary-front, .btn-secondary-back {
+        color: var(--white);
+        opacity: 0.7;
+        font-size: 25px;
+        font-weight: light;
+    }
+
+    .btn-secondary-front:hover, .btn-secondary-back:hover {
+        color: var(--white);
+    }
+
+    .custom-delete-button {
+        margin-top: -4.5rem;
+        margin-left: -9rem;
+    }
+
+    .btn-primary5 {
+        margin-left: 6rem;
+    }
+
+    .edit_label {
+        display: flex;
+        font-size: 13px;
+        color: var(--dark-blue);
+        font-weight: 500;
+        margin-left: 0.6rem;
+        margin-top: -1rem;
+    }
+    .btn-primary10, .btn-primary11, .btn-primary12{
+        background-color: var(--blue);
+        color: var(--white);
+        font-weight: 400;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 15px 35px;
+        margin-top: 0rem;
+        margin-bottom: 2rem;
+        transition: all 0.5s;
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    margin-bottom: 40px;
+}
+
+.prev-button,
+.next-button {
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden; /* MAKE SURE THE IMAGE DOESN'T GET OVER THE BUTTON */
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0 -2px;
+}
+
+
+
+
+.prev-button,
+.next-button {
+    color: var(--dark-flashcard);
+}
+
+.prev-button:hover,
+.next-button:hover {
+    opacity: 0.9;
+}
+
+/* ------ END FLASHCARDS STYLES ------ */
+
+/* ------ CONGRATULATIONS MESSAGE AND CONFETTI STYLES ------ */
+
+.completion-message {
+    display: none;
+    padding: 4rem 0;
+    text-align: center;
+    font-size: 27px;
+    margin-top: -4rem;
+    color: var(--dark);
+    font-weight: 400;
+    border-radius: 1rem;
+}
+
+.dark-theme .completion-message {
+    color: var(--white);
+}
+
+
+/* Flex container para centralizar os elementos verticalmente */
+.center-content {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em uma coluna */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    text-align: center; /* Alinha o texto ao centro */
+}
+
+.btn-primary7 {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 400;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 12px 140px;
+    margin-top: -7rem; /* Ajuste a margem superior conforme necessário */
+    transition: all 0.5s;
+}
+
+.img-fluid {
+    max-width: 600px;
+    margin-top: -9rem; /* Remova o margin-top para centralizar verticalmente */
+}
+
+
+
+@media (max-width: 767px) {
+    /* Estilos para dispositivos móveis com largura de tela até 767px */
+    .img-fluid {
+        max-width: 390px;
+        margin-top: -5vh;
+        margin-bottom: -5vh;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para os efeitos de confetes */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00; /* Cor dos confetes */
+    opacity: 0;
+    transform: translateY(0);
+    transition: transform 1s ease-out, opacity 1s ease-out;
+    pointer-events: none;
+}
+
+.active {
+    transform: translateY(200vh); /* Movimento de queda */
+    opacity: 1;
+}
+
+/* ------ END CONGRATULATIONS MESSAGE AND CONFETTI STYLES ------ */
+
+
+
+
+

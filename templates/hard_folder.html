@@ -1,0 +1,417 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Flashcards
+{% endblock %}
+
+{% block main %}
+{% if flashcards %}
+    <h2>Flashcards</h2>
+    <p class="flashcard-counter">{{ 1 if flashcards is none else flashcards | length }}</p>
+
+
+    <div class="content">
+        <div class="flashcard-container">
+            <div class="flashcard">
+                <div class="flashcard-inner">
+                    <div class="front">
+                        <button class="btn btn-speak-front">
+                            <img class="speaker" src="/static/images/speaker.png" alt="speak" width="40" height="40">
+                        </button>
+
+                        <div class="btn-group">
+
+                            <button type="button" class="btn btn-secondary-front" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i> <!-- Ícone de três pontos -->
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownBack">
+                                <li>
+                                    <button class="dropdown-item dropdown-item-front" type="button">
+                                        <select id="languageFront">
+                                            <option selected>Select a language</option>
+                                            <option value="en-US">Inglês (EUA)</option>
+                                            <option value="pt-BR">Português (Brasil)</option>
+                                            <!-- Adicione outras opções de língua conforme necessário -->
+                                        </select>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-edit-front dropdown-item" data-toggle="modal" data-target="#editModal">
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn-edit-front dropdown-item" data-toggle="modal" data-target="#editModal" id="randomizeButton">
+                                        Randomize Flashcards
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="content">
+                            <p>{{ flashcards[0].flashcard_front }}</p>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <button class="btn btn-speak-back">
+                            <img class="speaker" src="/static/images/speaker.png" alt="speak" width="40" height="40">
+                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary-back" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i> <!-- Ícone de três pontos -->
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownBack">
+                                <li>
+                                    <button class="dropdown-item dropdown-item-back" type="button">
+                                        <select id="languageBack">
+                                            <option selected>Select a language</option>
+                                            <option value="en-US">Inglês (EUA)</option>
+                                            <option value="pt-BR">Português (Brasil)</option>
+                                            <!-- Adicione outras opções de língua conforme necessário -->
+                                        </select>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-edit-back dropdown-item" data-toggle="modal" data-target="#editModal">
+                                        Edit flashcards
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn-edit-back dropdown-item" data-toggle="modal" data-target="#editModal" id="randomizeButton">
+                                        Randomize Flashcards
+                                    </button>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="content text-container">
+                            <p>{{ flashcards[0].flashcard_back }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button class="prev-button">
+            <svg xmlns="http://www.w3.org/2000/svg" style="height: 3.5em; width: 3.5em;" viewBox="0 0 512 512" class="dark-svg">
+                <path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM271 135c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-87 87 87 87c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0L167 273c-9.4-9.4-9.4-24.6 0-33.9L271 135z" style="fill: var(--dark-flashcard);"/>
+            </svg>
+        </button>
+
+        <button class="next-button" style="margin-left: 45px;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="height: 3.5em; width: 3.5em;" viewBox="0 0 512 512" class="dark-svg">
+                <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z" style="fill: var(--dark-flashcard);"/>
+            </svg>
+        </button>
+
+    </div>
+    <div id="flashcardButtonsContainer">
+        {% for flashcard in flashcards %}
+          <div class="flashcard-buttons-container">
+            <!-- Coloque os botões aqui -->
+            <input type="hidden" name="folder_id" value="{{ flashcard.folder_id }}">
+            <button type="button" onclick="setDifficultyAndMoveToNext('easy', '{{ flashcard.folder_id }}')" class="btn-primary10">Easy</button>
+            <button type="button" onclick="setDifficultyAndMoveToNext('medium', '{{ flashcard.folder_id }}')" class="btn-primary11">Medium</button>
+            <button type="button" onclick="setDifficultyAndMoveToNext('hard', '{{ flashcard.folder_id }}')" class="btn-primary12">Hard</button>
+
+          </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <!-- Se não houver flashcards, exibe uma mensagem -->
+      <h3>Não há flashcards de nivel difícil disponíveis</h3>
+      <img src="{{ url_for('static', filename='images/NoFile.png') }}" alt="image" class="Nofolder" width="350" height="450">
+  {% endif %}
+
+
+
+    <div class="modal" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                     <!-- FLASHCARD -->
+
+        {% for flashcard in flashcards %}
+<div class="flashcard-form">
+    <p class="heading">Flashcard {{ loop.index }}</p>
+    <form method="post" action="">
+        <input type="hidden" name="flashcard_id" value="{{ flashcard.folder_id }}">
+
+        <input type="text" class="input-box1" id="front" name="new_front" value="{{ flashcard.flashcard_front }}">
+        <span class="underline1"></span>
+        <label for="front" class="edit_label">Front do Flashcard</label>
+
+        <input type="text" class="input-box1" id="back" name="new_back" value="{{ flashcard.flashcard_back }}">
+        <span class="underline1"></span>
+        <label for="back" class="edit_label">Back do Flashcard</label>
+        <br>
+        <button type="submit" class="btn btn-primary5" id="saveChangesButton">Save changes</button>
+    </form>
+    <form method="post" action="/delete_flashcard">
+        <input type="hidden" name="folder_id" value="{{ flashcard.folder_id }}">
+        <input type="hidden" name="folder_name" value="{{ flashcard.folder_name }}">
+        <button class="btn btn-secondary custom-delete-button"  type="submit"><i class="fas fa-trash"></i></button>
+    </form>
+</div>
+    {% endfor %}
+
+
+
+
+    </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script>
+     document.addEventListener('DOMContentLoaded', () => {
+        let flashcards = {{ flashcards | tojson | safe }};
+        const flashcard = document.querySelector('.flashcard');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        const speakButtonFront = document.querySelector('.btn-speak-front');
+        const speakButtonBack = document.querySelector('.btn-speak-back');
+        const editButtonFront = document.querySelector('.btn-edit-front');
+        const editButtonBack = document.querySelector('.btn-edit-back');
+        const selectButtonFront = document.querySelector('.dropdown-item-front');
+        const selectButtonBack = document.querySelector('.dropdown-item-back');
+        const dropdownButtonFront = document.querySelector('.btn-secondary-front');
+        const dropdownButtonBack = document.querySelector('.btn-secondary-back');
+        const languageSelectFront = document.getElementById('languageFront');
+        const languageSelectBack = document.getElementById('languageBack');
+        const randomizeButton = document.getElementById('randomizeButton');
+
+
+        let selectedLanguageFront = languageSelectFront.value;
+        let selectedLanguageBack = languageSelectBack.value;
+        let currentIndex = 0;
+
+
+
+        const flashcardInner = document.querySelector('.flashcard-inner');
+        flashcardInner.addEventListener('click', (event) => {
+            if (!event.target.closest('.btn-speak') && !event.target.closest('.btn-edit')) {
+                flashcard.classList.toggle('flipped');
+            }
+        });
+
+        function speakText(text, language) {
+        const speechSynthesis = window.speechSynthesis;
+        const speechUtterance = new SpeechSynthesisUtterance(text);
+        speechUtterance.lang = language; // Define a língua selecionada
+        speechSynthesis.speak(speechUtterance);
+    }
+
+        speakButtonFront.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const textToSpeak = flashcard.querySelector('.front .content p').textContent;
+            speakText(textToSpeak, selectedLanguageFront); // Usar a língua selecionada para o front
+        });
+
+        speakButtonBack.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const textToSpeak = flashcard.querySelector('.back .content p').textContent;
+            speakText(textToSpeak, selectedLanguageBack); // Usar a língua selecionada para o back
+        });
+
+
+        // Botão de edição da frente do flashcard
+        editButtonFront.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const currentFrontText = flashcard.querySelector('.front .content p').textContent;
+            const frontInput = document.querySelector('#front');
+            frontInput.value = currentFrontText;
+            const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        });
+
+        // Botão de edição do verso do flashcard
+        editButtonBack.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const currentBackText = flashcard.querySelector('.back .content p').textContent;
+            const backInput = document.querySelector('#back');
+            backInput.value = currentBackText;
+            const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+        });
+        randomizeButton.addEventListener('click', (event) => {
+    event.stopPropagation(); // Impede a propagação do evento de clique
+    randomizeFlashcards(event); // Passa o evento como parâmetro
+});
+
+function randomizeFlashcards(event) {
+    event.stopPropagation();
+
+    const originalFirstFlashcard = flashcards[currentIndex];
+    const shuffledFlashcards = flashcards.slice();
+    shuffledFlashcards.sort(() => Math.random() - 0.5);
+
+    const originalFirstIndex = shuffledFlashcards.findIndex(flashcard => flashcard.folder_id === originalFirstFlashcard.folder_id);
+
+    if (originalFirstIndex !== -1) {
+        shuffledFlashcards.splice(originalFirstIndex, 1);
+        const randomIndex = Math.floor(Math.random() * (shuffledFlashcards.length - 1)) + 1;
+        shuffledFlashcards.splice(randomIndex, 0, originalFirstFlashcard);
+    }
+
+    flashcards = shuffledFlashcards;
+
+    const buttonContainers = document.querySelectorAll('.flashcard-buttons-container');
+  const newButtonOrder = [];
+
+  buttonContainers.forEach(container => {
+    const folderId = container.querySelector('input[name="folder_id"]').value;
+    const flashcardIndex = flashcards.findIndex(flashcard => flashcard.folder_id === folderId);
+    newButtonOrder.push({ flashcardIndex, container });
+  });
+
+  newButtonOrder.sort((a, b) => a.flashcardIndex - b.flashcardIndex);
+
+  const flashcardButtonsContainer = document.getElementById('flashcardButtonsContainer');
+  flashcardButtonsContainer.innerHTML = '';
+  newButtonOrder.forEach(item => {
+    flashcardButtonsContainer.appendChild(item.container);
+  });
+
+
+    currentIndex = flashcards.findIndex(flashcard => flashcard.folder_id === originalFirstFlashcard.folder_id);
+    showFlashcard(currentIndex); // Exibe o flashcard atualizado após o embaralhamento
+    updateFlashcardCounter(currentIndex);
+}
+
+
+
+        selectButtonFront.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede a propagação para o manipulador de eventos do flashcardInner
+        });
+
+        selectButtonBack.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede a propagação para o manipulador de eventos do flashcardInner
+        });
+
+        // Manipulador de eventos para os botões de três pontos na frente e no verso do flashcard
+        dropdownButtonFront.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede a propagação para o manipulador de eventos do flashcardInner
+        });
+
+
+        dropdownButtonBack.addEventListener('click', (event) => {
+            event.stopPropagation(); // Impede a propagação para o manipulador de eventos do flashcardInner
+        });
+
+
+        updateDifficultyButtons(0);
+        prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+    showFlashcard(currentIndex);
+    updateDifficultyButtons(currentIndex);
+});
+
+
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % (flashcards.length + 1);
+                if (currentIndex === flashcards.length) {
+                    window.location.href = '/confetti';
+                } else {
+                    showFlashcard(currentIndex);
+                    updateDifficultyButtons(currentIndex); // Atualiza os botões de dificuldade ao clicar no botão próximo
+                }
+            });
+
+
+            function showFlashcard(index) {
+    flashcard.classList.remove('flipped');
+    if (index >= 0 && index < flashcards.length) {
+        flashcard.querySelector('.front p').textContent = flashcards[index].flashcard_front;
+        flashcard.querySelector('.back .content p').textContent = flashcards[index].flashcard_back;
+    } else {
+        flashcard.querySelector('.front p').textContent = "No more flashcards!";
+        flashcard.querySelector('.back .content p').textContent = "";
+    }
+    updateFlashcardCounter(index);
+}
+
+
+        function updateFlashcardCounter(index) {
+            const counter = document.querySelector('.flashcard-counter');
+            counter.textContent = `${index + 1}/${flashcards.length}`;
+        }
+
+        // Mostrar o flashcard inicial
+        showFlashcard(currentIndex);
+
+        // Atualiza a língua quando o usuário seleciona uma opção
+        languageSelectFront.addEventListener('change', () => {
+            selectedLanguageFront = languageSelectFront.value;
+        });
+
+        languageSelectBack.addEventListener('change', () => {
+            selectedLanguageBack = languageSelectBack.value;
+        });
+
+    });
+    function updateDifficultyButtons(index) {
+        const flashcardButtonsContainers = document.querySelectorAll('.flashcard-buttons-container');
+
+        flashcardButtonsContainers.forEach((container, i) => {
+            if (i === index) {
+                container.style.display = 'block'; // Exibe os botões para o flashcard atual
+            } else {
+                container.style.display = 'none'; // Oculta os botões para os outros flashcards
+            }
+        });
+    }
+
+
+
+    function setDifficultyAndSubmitForm(difficulty, flashcardId) {
+    const updateForm = document.getElementById('updateForm');
+    const folderIdInput = document.getElementById('folderId');
+    const difficultyLevelInput = document.getElementById('difficultyLevel');
+
+    folderIdInput.value = folderId; // Verifique se flashcardId tem o valor correto
+    difficultyLevelInput.value = difficulty;
+
+    updateForm.submit();
+}
+function setDifficultyAndMoveToNext(difficulty, folderId) {
+    const data = {
+        difficulty: difficulty,
+        folder_id: folderId
+    };
+
+    fetch('/difficulty', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Nível de dificuldade atualizado com sucesso!');
+            // Chama a função para mostrar o próximo flashcard
+            currentIndex = (currentIndex + 1) % (flashcards.length + 1);
+            showFlashcard(currentIndex);
+            updateDifficultyButtons(currentIndex);
+        } else {
+            console.error('Erro ao atualizar o nível de dificuldade');
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+}
+
+</script>
+{% endblock %}

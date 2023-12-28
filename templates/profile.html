@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Profile
+{% endblock %}
+
+{% block main %}
+
+<h2>Change password</h2>
+<form class="form-login" action="/profile" method="post">
+    <div class="mb-3">
+        <label for="username" class="form-label1">Username</label>
+        <div class="input-group">
+            <input autocomplete="off" autofocus class="username form-control align-items-center" id="username_profile" name="username_profile" placeholder="Username" type="text">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="current_password" class="form-label1">Password</label>
+        <div class="input-group">
+            <input class="password form-control align-items-center" id="current_password" name="current_password" placeholder="New password" type="password">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="password_profile" class="form-label2">New password</label>
+        <div class="input-group">
+            <input class="password form-control align-items-center" id="password_profile" name="password_profile" placeholder="New password" type="password">
+            <span type="button" class="eye input-group-text" id="togglePass"><i class="fa fa-eye" id="eye1" aria-hidden="true"></i></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="new_password_again" class="form-label3">New password (again)</label>
+        <div class="input-group">
+            <input class="password form-control align-items-center" id="new_password_again" name="new_password_again" placeholder="New password (again)" type="password">
+            <span type="button" class="eye input-group-text" id="togglePass"><i class="fa fa-eye" id="eye2" aria-hidden="true"></i></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group d-flex justify-content-center">
+            <button class="custom-button" type="submit" id="profile-btn">Change password</button>
+        </div>
+    </div>
+
+</form>
+
+
+<!-- SCRIPT SEE AND HIDE PASSWORD -->
+<script>
+    let button1 = document.querySelector('.eye');
+    let input1 = document.querySelector('#password_profile');
+    let icon1 = document.querySelector('#eye1'); // Selecione o ícone dentro da classe .eye
+
+    icon1.addEventListener('click', function() {
+        button1.classList.toggle('visible');
+        if (button1.classList.contains('visible')) {
+            icon1.classList.remove('fa-eye-slash'); // Remova a classe do ícone de olho cortado
+            icon1.classList.add('fa-eye'); // Adicione a classe do ícone de olho
+            input1.type = 'text';
+            input1.style.opacity = 1;
+        } else {
+            icon1.classList.remove('fa-eye'); // Remova a classe do ícone de olho
+            icon1.classList.add('fa-eye-slash'); // Adicione a classe do ícone de olho cortado
+            input1.type = 'password';
+        }
+    });
+
+    let button2 = document.querySelector('#togglePass');
+    let input2 = document.querySelector('#new_password_again');
+    let icon2 = document.querySelector('#eye2'); // Selecione o ícone dentro da classe .eye
+
+    icon2.addEventListener('click', function() {
+        button2.classList.toggle('visible');
+        if (button2.classList.contains('visible')) {
+            icon2.classList.remove('fa-eye-slash'); // Remova a classe do ícone de olho cortado
+            icon2.classList.add('fa-eye'); // Adicione a classe do ícone de olho
+            input2.type = 'text';
+            input2.style.opacity = 1;
+        } else {
+            icon2.classList.remove('fa-eye'); // Remova a classe do ícone de olho
+            icon2.classList.add('fa-eye-slash'); // Adicione a classe do ícone de olho cortado
+            input2.type = 'password';
+        }
+    });
+</script>
+{% endblock %}

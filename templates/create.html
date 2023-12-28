@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Flashcards
+{% endblock %}
+
+{% block main %}
+
+<h2>Create Flashcards</h2>
+
+<form method="post" action="/create">
+
+    <!-- FOLDER NAME -->
+    <div class="input-container">
+        <input class="input-box" type="text" placeholder="Folder name" name="folder_name">
+        <span class="underline"></span>
+    </div>
+
+    <!-- FOLDER DESCRIPTION -->
+    <div class="input-container">
+        <input class="input-box" type="text" placeholder="Folder description" name="folder_description">
+        <span class="underline"></span>
+    </div>
+
+    <!-- FLASHCARD -->
+    <div id="flashcards-container">
+        <div class="flashcard-form">
+
+            <!-- HEADER FLASHCARD -->
+            <p class="heading"> Flashcard 1</p>
+
+            <!-- FLASHCARD FRONT -->
+            <input required="" class="input-box1" placeholder="Flashcard front" name="flashcard_front_1" type="text">
+            <span class="underline1"></span>
+
+            <!-- FLASHCARD BACK -->
+            <input required="" class="input-box1" placeholder="Flashcard back" name="flashcard_back_1" type="text">
+            <span class="underline1"></span>
+        </div>
+    </div>
+
+    <!-- BUTTON ADD FLASHCARD -->
+    <button type="button" id="add-flashcard" class="btn btn-primary btn-lg custom-button">Add Flashcard</button>
+
+    <!-- BUTTON TO TAKE FLASHCARD COUNT -->
+    <input type="hidden" id="flashcard_count" name="flashcard_count" value="1">
+
+    <!-- BUTTON CREATE FLASHCARD -->
+    <button type="submit" class="btn btn-outline-primary btn-lg custom-button1">Create Flashcards</button>
+
+</form>
+
+<!-- ALERT USER THAT THE FLASHCARD WAS CREATE -->
+<div class="alert alert-primary hidden" role="alert" id="flashcard-alert">
+    Flashcards created successfully!
+</div>
+
+<!-- SCRIPT TO ADD FLASHCARD AND NUMERIC EACH NEW FLASHCARD ADDED. SCRIPT TO ALERT USER -->
+<script>
+    const flashcardCountInput = document.getElementById("flashcard_count");
+    const addFlashcardButton = document.getElementById("add-flashcard");
+    const flashcardContainer = document.getElementById("flashcards-container");
+    const flashcardAlert = document.getElementById("flashcard-alert");
+
+    // NUMERIC THE NEW FLASHCARDS ADDED
+    addFlashcardButton.addEventListener("click", () => {
+        const currentCount = parseInt(flashcardCountInput.value, 10);
+        flashcardCountInput.value = currentCount + 1;
+
+        // NEW FLASHCARD HTML WHEN CLICK IN THE BUTTON ADD
+        const newFlashcard = `
+            <div class="flashcard-form">
+                <p class="heading"> Flashcard ${currentCount + 1}</p>
+                <button class="btn btn-secondary custom-delete-button2"  type="submit"><i class="fas fa-trash"></i></button>
+                <input required=""  class="input-box1" placeholder="Flashcard front" name="flashcard_front_${currentCount + 1}" type="text">
+                <span class="underline1"></span>
+                <input required=""  class="input-box1" placeholder="Flashcard back" name="flashcard_back_${currentCount + 1}" type="text">
+                <span class="underline1"></span>
+
+            </div>
+        `;
+
+        const flashcardDiv = document.createElement("div");
+        flashcardDiv.innerHTML = newFlashcard;
+        flashcardContainer.appendChild(flashcardDiv);
+
+        // Adiciona a lógica para remover o flashcard
+        const deleteButtons = flashcardContainer.querySelectorAll(".custom-delete-button2");
+        deleteButtons.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.target.closest(".flashcard-form").remove();
+                updateFlashcardNumber(); // Atualiza o número dos flashcards restantes
+            });
+        });
+
+        // WHEN A FLASHCARD IS CREATED
+        flashcardAlert.classList.remove("hidden");
+
+        // HIDDEN THE ALERT AGAIN
+        flashcardAlert.classList.add("hidden");
+    });
+
+    // Função para atualizar o número dos flashcards restantes
+    function updateFlashcardNumber() {
+        const flashcardForms = flashcardContainer.querySelectorAll(".flashcard-form");
+        flashcardCountInput.value = flashcardForms.length; // Atualiza o valor do contador de flashcards
+
+        // Atualiza o número dos flashcards exibidos
+        flashcardForms.forEach((form, index) => {
+            const heading = form.querySelector(".heading");
+            heading.textContent = `Flashcard ${index + 1}`;
+        });
+    }
+
+</script>
+
+{% endblock %}
+
+
+
